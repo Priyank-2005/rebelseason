@@ -1,20 +1,20 @@
 @import "tailwindcss";
 
 :root {
-  --background: #FFFFFF;
-  --foreground: #000000;
+  --background: #FDF0F4;
+  --foreground: #1a1a1a;
   
-  --primary: #F7EBEB; /* Very soft, sophisticated light pink */
-  --primary-foreground: #000000;
+  --primary: #F8C8DC; /* Soft pink for announcement bar & accents */
+  --primary-foreground: #1a1a1a;
   
-  --secondary: #FDF8F9; /* Off-white with a hint of pink */
-  --secondary-foreground: #000000;
+  --secondary: #F5F0EB; /* Warm cream */
+  --secondary-foreground: #1a1a1a;
 
-  --muted: #F5F5F5;
+  --muted: #F0EDE8;
   --muted-foreground: #666666;
 
-  --border: #EAEAEA;
-  --input: #EAEAEA;
+  --border: #E8E4DF;
+  --input: #D9D5D0;
   
   --font-heading: 'Playfair Display', serif;
   --font-body: 'Inter', sans-serif;
@@ -31,9 +31,15 @@
   --color-muted-foreground: var(--muted-foreground);
   --color-border: var(--border);
   --color-input: var(--input);
-
   --font-heading: var(--font-heading);
   --font-body: var(--font-body);
+
+  --animate-marquee: marquee 30s linear infinite;
+  
+  @keyframes marquee {
+    0% { transform: translateX(0%); }
+    100% { transform: translateX(-50%); }
+  }
 }
 
 @layer base {
@@ -48,7 +54,6 @@
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-heading);
     font-weight: 400;
-    letter-spacing: -0.02em;
   }
 }
 

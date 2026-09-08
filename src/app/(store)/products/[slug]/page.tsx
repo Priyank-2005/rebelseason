@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { ChevronRight, Plus, Minus } from "lucide-react";
 import Link from "next/link";
+import { ProductCard } from "@/components/product/ProductCard";
 
 export default async function ProductDetailPage({ params }: { params: Promise<{ slug: string }> }) {
   const resolvedParams = await params;
@@ -138,6 +139,17 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
 
         </div>
       </div>
+
+      {/* Related Products */}
+      <div className="mt-24 lg:mt-32 pt-16 border-t border-border">
+        <h2 className="font-heading text-2xl sm:text-3xl font-normal mb-8 text-center">You May Also Like</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-12">
+          {mockProducts.filter(p => p.id !== product.id).slice(0, 4).map((relatedProduct) => (
+            <ProductCard key={relatedProduct.id} product={relatedProduct} />
+          ))}
+        </div>
+      </div>
+
     </div>
   );
 }
