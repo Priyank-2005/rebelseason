@@ -13,7 +13,6 @@ export function Footer() {
             <div className="flex flex-col leading-none">
               <span className="font-heading italic text-xs text-background/50">The</span>
               <span className="font-heading text-xl font-semibold tracking-tight text-background uppercase">Rebel Season</span>
-              <span className="font-heading italic text-xs text-background/50 -mt-0.5">Studio</span>
             </div>
             <p className="text-background/60 text-[13px] leading-relaxed max-w-xs">
               Premium fashion designed for the modern woman. Effortless elegance, everyday comfort.
@@ -31,10 +30,12 @@ export function Footer() {
             <h4 className="text-[11px] font-semibold uppercase tracking-[0.15em] mb-6 text-white/80">Shop</h4>
             <ul className="space-y-3 text-[13px] text-background/60">
               <li><Link href="/products" className="hover:text-white transition-colors">All Products</Link></li>
-              <li><Link href="/categories/new-arrivals" className="hover:text-white transition-colors">New Arrivals</Link></li>
-              <li><Link href="/categories/clothing" className="hover:text-white transition-colors">Clothing</Link></li>
-              <li><Link href="/categories/tops" className="hover:text-white transition-colors">Tops</Link></li>
-              <li><Link href="/categories/footwear" className="hover:text-white transition-colors">Footwear</Link></li>
+              <li><Link href="/categories/dresses" className="hover:text-white transition-colors">Dresses</Link></li>
+              <li><Link href="/categories/co-ords" className="hover:text-white transition-colors">Co-ords</Link></li>
+              <li><Link href="/categories/bottoms" className="hover:text-white transition-colors">Bottoms</Link></li>
+              <li><Link href="/categories/bags" className="hover:text-white transition-colors">Bags</Link></li>
+              <li><Link href="/categories/jeans" className="hover:text-white transition-colors">Jeans</Link></li>
+              <li><Link href="/categories/winterwear" className="hover:text-white transition-colors">Winterwear</Link></li>
             </ul>
           </div>
 
@@ -53,7 +54,7 @@ export function Footer() {
         </div>
 
         <div className="mt-16 pt-6 border-t border-background/10 flex flex-col md:flex-row justify-between items-center gap-4 text-[11px] text-background/40">
-          <p>&copy; {new Date().getFullYear()} The Rebel Season Studio. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} The Rebel Season. All rights reserved.</p>
           <div className="flex space-x-6">
             <Link href="/privacy" className="hover:text-background/70 transition-colors">Privacy Policy</Link>
             <Link href="/terms" className="hover:text-background/70 transition-colors">Terms of Service</Link>

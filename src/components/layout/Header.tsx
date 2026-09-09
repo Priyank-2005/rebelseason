@@ -14,7 +14,7 @@ export function Header() {
     <div className="w-full flex flex-col relative z-50">
       {/* Pink Announcement Bar (Always in normal document flow) */}
       <div className="w-full bg-primary py-2.5 px-4 text-center text-[11px] sm:text-xs tracking-wide font-medium text-primary-foreground relative z-[60]">
-        ✦ Free Shipping on Orders Over ₹2,000 &bull; Easy Returns &bull; COD Available ✦
+        ✦ Free Shipping on Orders Over ₹2,000 &bull; Easy Returns ✦
       </div>
 
       {/* Main Navbar (Overlays hero on homepage) */}
@@ -24,12 +24,12 @@ export function Header() {
             
             {/* Left: Nav Links */}
             <nav className="hidden md:flex items-center gap-6 text-[12px] font-medium text-foreground flex-1">
-              <Link href="/" className="hover:text-muted-foreground transition-colors">Home</Link>
-              <Link href="/categories/new-arrivals" className="hover:text-muted-foreground transition-colors">New Arrivals</Link>
-              <Link href="/categories/footwear" className="hover:text-muted-foreground transition-colors">Footwear</Link>
-              <Link href="/categories/tops" className="hover:text-muted-foreground transition-colors">Tops</Link>
-              <Link href="/products" className="hover:text-muted-foreground transition-colors">Best Sellers</Link>
-              <Link href="/contact" className="hover:text-muted-foreground transition-colors">Support</Link>
+              <Link href="/categories/dresses" className="hover:text-muted-foreground transition-colors uppercase tracking-wide">Dresses</Link>
+              <Link href="/categories/co-ords" className="hover:text-muted-foreground transition-colors uppercase tracking-wide">Co-ords</Link>
+              <Link href="/categories/bottoms" className="hover:text-muted-foreground transition-colors uppercase tracking-wide">Bottoms</Link>
+              <Link href="/categories/bags" className="hover:text-muted-foreground transition-colors uppercase tracking-wide">Bags</Link>
+              <Link href="/categories/jeans" className="hover:text-muted-foreground transition-colors uppercase tracking-wide">Jeans</Link>
+              <Link href="/categories/winterwear" className="hover:text-muted-foreground transition-colors uppercase tracking-wide">Winterwear</Link>
             </nav>
 
             {/* Mobile menu button */}
@@ -54,7 +54,6 @@ export function Header() {
                 <span className="font-heading text-xl sm:text-2xl font-semibold tracking-tight text-foreground uppercase leading-tight">
                   Rebel Season
                 </span>
-                <span className="font-heading text-[10px] italic text-foreground/60 -mt-0.5">Studio</span>
               </Link>
             </div>
 
@@ -85,12 +84,12 @@ export function Header() {
       {isMobileMenuOpen && (
         <div className="fixed inset-0 bg-background/95 backdrop-blur-md z-40 flex flex-col pt-24 px-6 md:hidden">
           <nav className="flex flex-col space-y-8 text-xl font-medium items-center text-center mt-12">
-            <Link href="/" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-muted-foreground transition-colors">Home</Link>
-            <Link href="/categories/new-arrivals" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-muted-foreground transition-colors">New Arrivals</Link>
-            <Link href="/categories/footwear" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-muted-foreground transition-colors">Footwear</Link>
-            <Link href="/categories/tops" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-muted-foreground transition-colors">Tops</Link>
-            <Link href="/products" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-muted-foreground transition-colors">Best Sellers</Link>
-            <Link href="/contact" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-muted-foreground transition-colors">Support</Link>
+            <Link href="/categories/dresses" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-muted-foreground transition-colors uppercase tracking-wide">Dresses</Link>
+            <Link href="/categories/co-ords" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-muted-foreground transition-colors uppercase tracking-wide">Co-ords</Link>
+            <Link href="/categories/bottoms" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-muted-foreground transition-colors uppercase tracking-wide">Bottoms</Link>
+            <Link href="/categories/bags" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-muted-foreground transition-colors uppercase tracking-wide">Bags</Link>
+            <Link href="/categories/jeans" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-muted-foreground transition-colors uppercase tracking-wide">Jeans</Link>
+            <Link href="/categories/winterwear" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-muted-foreground transition-colors uppercase tracking-wide">Winterwear</Link>
             
             <div className="pt-8 mt-8 border-t border-border/50 w-full flex flex-col space-y-8">
               <Link href="/login" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-muted-foreground transition-colors">Log In</Link>

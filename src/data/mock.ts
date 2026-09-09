@@ -16,7 +16,7 @@ export const mockProducts = [
     price: 1299,
     salePrice: null,
     images: ["https://images.unsplash.com/photo-1550639525-c97d455acf70?auto=format&fit=crop&q=80&w=800", "https://images.unsplash.com/photo-1550639524-a6f58345a278?auto=format&fit=crop&q=80&w=800"],
-    category: "Tops & Tees",
+    category: "Co-ords",
     isNew: true,
   },
   {
@@ -36,7 +36,7 @@ export const mockProducts = [
     price: 1899,
     salePrice: null,
     images: ["https://images.unsplash.com/photo-1596783049098-b80c5417b1bf?auto=format&fit=crop&q=80&w=800", "https://images.unsplash.com/photo-1596783049051-fb18e9526e0f?auto=format&fit=crop&q=80&w=800"],
-    category: "Tops & Tees",
+    category: "Jeans",
     isNew: false,
   },
   {
@@ -66,7 +66,7 @@ export const mockProducts = [
     price: 3499,
     salePrice: null,
     images: ["https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?auto=format&fit=crop&q=80&w=800", "https://images.unsplash.com/photo-1620799140188-3b2a02fd9a77?auto=format&fit=crop&q=80&w=800"],
-    category: "Outerwear",
+    category: "Winterwear",
     isNew: false,
   },
   {
@@ -76,7 +76,7 @@ export const mockProducts = [
     price: 2999,
     salePrice: 2499,
     images: ["https://images.unsplash.com/photo-1544441893-675973e31985?auto=format&fit=crop&q=80&w=800", "https://images.unsplash.com/photo-1544441892-794166f1e3dd?auto=format&fit=crop&q=80&w=800"],
-    category: "Outerwear",
+    category: "Winterwear",
     isNew: true,
   }
 ];
@@ -90,32 +90,32 @@ export const mockCategories = [
   },
   {
     id: "c_2",
-    name: "Tops & Tees",
-    slug: "tops-and-tees",
-    image: "https://images.unsplash.com/photo-1485230405346-71acb9518d9c?auto=format&fit=crop&q=80&w=800"
-  },
-  {
-    id: "c_3",
     name: "Co-ords",
     slug: "co-ords",
     image: "https://images.unsplash.com/photo-1595777457583-95e059d581b8?auto=format&fit=crop&q=80&w=800"
   },
   {
-    id: "c_4",
-    name: "Outerwear",
-    slug: "outerwear",
-    image: "https://images.unsplash.com/photo-1539008835657-9e8e9680c956?auto=format&fit=crop&q=80&w=800"
-  },
-  {
-    id: "c_5",
+    id: "c_3",
     name: "Bottoms",
     slug: "bottoms",
     image: "https://images.unsplash.com/photo-1584273143981-41c073dfe8f8?auto=format&fit=crop&q=80&w=800"
   },
   {
-    id: "c_6",
-    name: "Accessories",
-    slug: "accessories",
+    id: "c_4",
+    name: "Bags",
+    slug: "bags",
     image: "https://images.unsplash.com/photo-1584916201218-f4242ceb4809?auto=format&fit=crop&q=80&w=800"
+  },
+  {
+    id: "c_5",
+    name: "Jeans",
+    slug: "jeans",
+    image: "https://images.unsplash.com/photo-1541099649105-f69ad21f3246?auto=format&fit=crop&q=80&w=800"
+  },
+  {
+    id: "c_6",
+    name: "Winterwear",
+    slug: "winterwear",
+    image: "https://images.unsplash.com/photo-1539008835657-9e8e9680c956?auto=format&fit=crop&q=80&w=800"
   }
 ];

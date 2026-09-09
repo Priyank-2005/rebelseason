@@ -25,9 +25,6 @@ export function NewArrivals() {
               <span className="font-heading text-5xl sm:text-6xl md:text-7xl font-bold tracking-tight text-white uppercase leading-none block -mt-1">
                 SEASON
               </span>
-              <span className="font-heading italic text-3xl sm:text-4xl text-white/80 block -mt-1">
-                Studio
-              </span>
             </div>
           </div>
 
