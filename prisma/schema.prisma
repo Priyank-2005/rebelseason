@@ -1,5 +1,6 @@
 ﻿generator client {
-  provider = "prisma-client-js"`n
+  provider = "prisma-client-js"
+
 }
 
 datasource db {
@@ -246,6 +247,7 @@ model Setting {
   value String
   @@map("settings")
 }
+
 
 
 
