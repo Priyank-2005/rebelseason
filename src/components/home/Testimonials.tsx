@@ -1,14 +1,17 @@
-"use client";
+﻿"use client";
 
-export function Testimonials() {
-  const customerImages = [
-    "https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&q=80&w=600",
-    "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&q=80&w=600",
-    "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=600",
-    "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&q=80&w=600",
-    "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=600",
-    "https://images.unsplash.com/photo-1522228115018-d838bcce5c3a?auto=format&fit=crop&q=80&w=600",
+export function Testimonials({ settings }: { settings?: Record<string, string> }) {
+  const rawImages = [
+    settings?.test1_image,
+    settings?.test2_image,
+    settings?.test3_image,
+    settings?.test4_image,
+    settings?.test5_image,
+    settings?.test6_image,
   ];
+  const customerImages = rawImages.filter(Boolean);
+  
+  if (customerImages.length === 0) return null;
 
   return (
     <section className="py-20 lg:py-24 bg-secondary/30 overflow-hidden">
@@ -51,3 +54,5 @@ export function Testimonials() {
     </section>
   );
 }
+
+

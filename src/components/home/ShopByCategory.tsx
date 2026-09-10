@@ -1,7 +1,13 @@
 import Link from "next/link";
-import { mockCategories } from "@/data/mock";
+import { CategoryWithRelations } from "@/lib/dal";
 
-export function ShopByCategory() {
+interface ShopByCategoryProps {
+  categories: CategoryWithRelations[];
+}
+
+export function ShopByCategory({ categories }: ShopByCategoryProps) {
+  if (!categories || categories.length === 0) return null;
+
   return (
     <section className="py-20 lg:py-24 bg-secondary/30">
       <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8">
@@ -16,16 +22,18 @@ export function ShopByCategory() {
         </div>
 
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4 lg:gap-6">
-          {mockCategories.map((category) => (
+          {categories.map((category) => (
             <Link 
               key={category.id} 
               href={`/categories/${category.slug}`}
-              className="group relative block w-full overflow-hidden aspect-[4/5]"
+              className="group relative block w-full overflow-hidden aspect-[4/5] bg-secondary"
             >
-              <div 
-                className="absolute inset-0 bg-cover bg-center transition-transform duration-700 ease-out group-hover:scale-105"
-                style={{ backgroundImage: `url('${category.image}')` }}
-              />
+              {category.image && (
+                <div 
+                  className="absolute inset-0 bg-cover bg-center transition-transform duration-700 ease-out group-hover:scale-105"
+                  style={{ backgroundImage: `url('${category.image}')` }}
+                />
+              )}
               <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors duration-500" />
               
               <div className="absolute inset-0 flex flex-col items-center justify-center p-4 text-center">

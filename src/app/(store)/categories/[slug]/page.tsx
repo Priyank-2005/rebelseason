@@ -1,8 +1,9 @@
-import { mockProducts, mockCategories } from "@/data/mock";
 import { ProductCard } from "@/components/product/ProductCard";
 import { Button } from "@/components/ui/button";
 import { SlidersHorizontal, ChevronDown } from "lucide-react";
 import { notFound } from "next/navigation";
+import { getCategoryBySlug } from "@/lib/dal/categories";
+import { getProductsByCategory, getNewArrivals } from "@/lib/dal/products";
 
 interface CategoryPageProps {
   params: Promise<{ slug: string }>;
@@ -11,19 +12,20 @@ interface CategoryPageProps {
 export default async function CategoryPage({ params }: CategoryPageProps) {
   const resolvedParams = await params;
   
-  // Find category (or mock it if it's "new-arrivals" which doesn't exist in mockCategories)
-  const categoryName = resolvedParams.slug === "new-arrivals" 
-    ? "New Arrivals" 
-    : mockCategories.find(c => c.slug === resolvedParams.slug)?.name;
-
-  if (!categoryName) {
-    return notFound();
+  let categoryName = "";
+  let products = [];
+  
+  if (resolvedParams.slug === "new-arrivals") {
+    categoryName = "New Arrivals";
+    products = await getNewArrivals();
+  } else {
+    const category = await getCategoryBySlug(resolvedParams.slug);
+    if (!category) {
+      return notFound();
+    }
+    categoryName = category.name;
+    products = await getProductsByCategory(resolvedParams.slug);
   }
-
-  // Filter products (mock logic)
-  const products = resolvedParams.slug === "new-arrivals" 
-    ? mockProducts.filter(p => p.isNew)
-    : mockProducts.filter(p => p.category.toLowerCase() === categoryName.toLowerCase());
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 w-full">

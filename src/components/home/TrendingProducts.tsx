@@ -1,10 +1,13 @@
 import Link from "next/link";
 import { ProductCard } from "@/components/product/ProductCard";
-import { mockProducts } from "@/data/mock";
+import { ProductWithRelations } from "@/lib/dal";
 
-export function TrendingProducts() {
-  // Use the first 6 products for trending
-  const trendingProducts = mockProducts.slice(0, 6);
+interface TrendingProductsProps {
+  products: ProductWithRelations[];
+}
+
+export function TrendingProducts({ products }: TrendingProductsProps) {
+  if (!products || products.length === 0) return null;
 
   return (
     <section className="py-20 lg:py-24 bg-background">
@@ -28,7 +31,7 @@ export function TrendingProducts() {
         </div>
 
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-x-3 sm:gap-x-4 lg:gap-x-6 gap-y-10 sm:gap-y-12">
-          {trendingProducts.map((product) => (
+          {products.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}
         </div>

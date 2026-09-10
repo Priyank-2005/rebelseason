@@ -1,17 +1,22 @@
-import { mockProducts } from "@/data/mock";
 import { notFound } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { ChevronRight, Plus, Minus } from "lucide-react";
 import Link from "next/link";
 import { ProductCard } from "@/components/product/ProductCard";
+import { getProductBySlug, getProductsByCategory } from "@/lib/dal/products";
 
 export default async function ProductDetailPage({ params }: { params: Promise<{ slug: string }> }) {
   const resolvedParams = await params;
-  const product = mockProducts.find(p => p.slug === resolvedParams.slug);
+  const product = await getProductBySlug(resolvedParams.slug);
 
   if (!product) {
     return notFound();
   }
+
+  // Get related products from the same category
+  const relatedProducts = (await getProductsByCategory(product.category.slug)).filter(p => p.id !== product.id).slice(0, 4);
+
+  const isOnSale = product.originalPrice && product.originalPrice > product.price;
 
   return (
     <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-12 w-full">
@@ -20,6 +25,8 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
         <Link href="/" className="hover:text-foreground transition-colors">Home</Link>
         <ChevronRight className="w-3 h-3 mx-3 mt-[1px]" />
         <Link href="/products" className="hover:text-foreground transition-colors">Shop</Link>
+        <ChevronRight className="w-3 h-3 mx-3 mt-[1px]" />
+        <Link href={`/categories/${product.category.slug}`} className="hover:text-foreground transition-colors">{product.category.name}</Link>
         <ChevronRight className="w-3 h-3 mx-3 mt-[1px]" />
         <span className="text-foreground truncate">{product.name}</span>
       </nav>
@@ -57,43 +64,37 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
           <h1 className="font-heading text-4xl sm:text-5xl font-normal mb-4">{product.name}</h1>
           
           <div className="flex items-center gap-4 text-xl mb-10">
-            {product.salePrice ? (
+            {isOnSale ? (
               <>
-                <span className="text-muted-foreground line-through text-lg">₹{product.price}</span>
-                <span className="text-foreground font-medium">₹{product.salePrice}</span>
+                <span className="text-muted-foreground line-through text-lg">₹{product.originalPrice?.toLocaleString('en-IN')}</span>
+                <span className="text-foreground font-medium">₹{product.price.toLocaleString('en-IN')}</span>
               </>
             ) : (
-              <span className="text-foreground font-medium">₹{product.price}</span>
+              <span className="text-foreground font-medium">₹{product.price.toLocaleString('en-IN')}</span>
             )}
           </div>
 
           <div className="space-y-8 mb-10">
-            {/* Color Selection */}
-            <div>
-              <div className="flex justify-between items-center mb-3">
-                <span className="text-[11px] font-semibold tracking-[0.1em] uppercase">Color: <span className="text-muted-foreground ml-1">Black</span></span>
-              </div>
-              <div className="flex gap-3">
-                <button className="w-8 h-8 rounded-full bg-[#1a1a1a] ring-1 ring-offset-2 ring-foreground"></button>
-                <button className="w-8 h-8 rounded-full bg-[#f3f4f6] border border-border"></button>
-                <button className="w-8 h-8 rounded-full bg-[#8c7a6b] border border-border"></button>
-              </div>
-            </div>
-
             {/* Size Selection */}
-            <div>
-              <div className="flex justify-between items-center mb-3">
-                <span className="text-[11px] font-semibold tracking-[0.1em] uppercase">Size</span>
-                <Link href="#" className="text-[11px] font-medium tracking-[0.1em] text-muted-foreground underline underline-offset-4 hover:text-foreground transition-colors">Size Guide</Link>
+            {product.hasVariants && product.variants && product.variants.length > 0 && (
+              <div>
+                <div className="flex justify-between items-center mb-3">
+                  <span className="text-[11px] font-semibold tracking-[0.1em] uppercase">Size</span>
+                  <Link href="#" className="text-[11px] font-medium tracking-[0.1em] text-muted-foreground underline underline-offset-4 hover:text-foreground transition-colors">Size Guide</Link>
+                </div>
+                <div className="grid grid-cols-4 sm:grid-cols-5 gap-3">
+                  {product.variants.map((variant) => (
+                    <button 
+                      key={variant.id} 
+                      disabled={variant.stock === 0}
+                      className={`h-12 text-[13px] font-medium border transition-colors ${variant.stock === 0 ? 'border-border text-muted-foreground opacity-50 cursor-not-allowed bg-secondary/50 line-through' : 'border-border text-foreground hover:border-foreground'}`}
+                    >
+                      {variant.size}
+                    </button>
+                  ))}
+                </div>
               </div>
-              <div className="grid grid-cols-4 sm:grid-cols-5 gap-3">
-                {['XS', 'S', 'M', 'L', 'XL'].map((size) => (
-                  <button key={size} className={`h-12 text-[13px] font-medium border transition-colors ${size === 'M' ? 'border-foreground bg-foreground text-background' : 'border-border text-foreground hover:border-foreground'}`}>
-                    {size}
-                  </button>
-                ))}
-              </div>
-            </div>
+            )}
 
             {/* Quantity */}
             <div>
@@ -121,14 +122,18 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
           {/* Description Accordions */}
           <div className="border-t border-border pt-8 space-y-6 text-[14px] font-light text-muted-foreground leading-relaxed">
             <p>
-              The {product.name} is a versatile essential for your modern wardrobe. Designed with a relaxed fit and premium materials to ensure comfort without compromising on style. The clean lines and subtle details make it perfect for any occasion.
+              {product.description || `The ${product.name} is a versatile essential for your modern wardrobe. Designed with a relaxed fit and premium materials to ensure comfort without compromising on style. The clean lines and subtle details make it perfect for any occasion.`}
             </p>
-            <div className="border-b border-border pb-4">
-              <button className="flex justify-between items-center w-full text-foreground text-[13px] font-semibold tracking-[0.1em] uppercase py-2">
-                Details & Fit
-                <Plus className="w-4 h-4 stroke-[1.5]" />
-              </button>
-            </div>
+            {product.material && (
+              <p>
+                <strong>Material:</strong> {product.material}
+              </p>
+            )}
+            {product.careInstructions && (
+              <p>
+                <strong>Care:</strong> {product.careInstructions}
+              </p>
+            )}
             <div className="border-b border-border pb-4">
               <button className="flex justify-between items-center w-full text-foreground text-[13px] font-semibold tracking-[0.1em] uppercase py-2">
                 Shipping & Returns
@@ -141,14 +146,16 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
       </div>
 
       {/* Related Products */}
-      <div className="mt-24 lg:mt-32 pt-16 border-t border-border">
-        <h2 className="font-heading text-2xl sm:text-3xl font-normal mb-8 text-center">You May Also Like</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-12">
-          {mockProducts.filter(p => p.id !== product.id).slice(0, 4).map((relatedProduct) => (
-            <ProductCard key={relatedProduct.id} product={relatedProduct} />
-          ))}
+      {relatedProducts.length > 0 && (
+        <div className="mt-24 lg:mt-32 pt-16 border-t border-border">
+          <h2 className="font-heading text-2xl sm:text-3xl font-normal mb-8 text-center">You May Also Like</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-12">
+            {relatedProducts.map((relatedProduct) => (
+              <ProductCard key={relatedProduct.id} product={relatedProduct} />
+            ))}
+          </div>
         </div>
-      </div>
+      )}
 
     </div>
   );

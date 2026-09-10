@@ -1,11 +1,11 @@
-"use client";
+﻿"use client";
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { Search, User, ShoppingBag, Menu, X } from "lucide-react";
 
-export function Header() {
+export function Header({ user }: { user?: { name: string } | null }) {
   const pathname = usePathname();
   const isHome = pathname === "/";
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -59,17 +59,29 @@ export function Header() {
 
             {/* Right: Icons & Auth */}
             <div className="flex items-center justify-end gap-5 flex-1">
-              <div className="hidden lg:flex items-center gap-4 text-[12px] font-medium mr-2">
-                <Link href="/login" className="text-foreground hover:text-muted-foreground transition-colors">Log In</Link>
-                <Link href="/signup" className="text-foreground hover:text-muted-foreground transition-colors">Sign Up</Link>
+                            <div className="hidden lg:flex items-center gap-4 text-[12px] font-medium mr-2">
+                {!user ? (
+                  <>
+                    <Link href="/login" className="text-foreground hover:text-muted-foreground transition-colors">Log In</Link>
+                    <Link href="/signup" className="text-foreground hover:text-muted-foreground transition-colors">Sign Up</Link>
+                  </>
+                ) : null}
               </div>
               <button className="text-foreground hover:text-muted-foreground transition-colors">
                 <Search className="w-5 h-5 stroke-[1.5]" />
                 <span className="sr-only">Search</span>
               </button>
-              <Link href="/account" className="text-foreground hover:text-muted-foreground transition-colors">
-                <User className="w-5 h-5 stroke-[1.5]" />
-                <span className="sr-only">Account</span>
+                            <Link href="/account" className="text-foreground hover:text-muted-foreground transition-colors">
+                {user ? (
+                  <div className="w-6 h-6 rounded-full bg-black text-white flex items-center justify-center text-[10px] font-medium tracking-wide">
+                    {user.name.split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase()}
+                  </div>
+                ) : (
+                  <>
+                    <User className="w-5 h-5 stroke-[1.5]" />
+                    <span className="sr-only">Account</span>
+                  </>
+                )}
               </Link>
               <Link href="/cart" className="text-foreground hover:text-muted-foreground transition-colors relative">
                 <ShoppingBag className="w-5 h-5 stroke-[1.5]" />
@@ -102,3 +114,4 @@ export function Header() {
     </div>
   );
 }
+

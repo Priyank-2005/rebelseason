@@ -2,8 +2,10 @@ import Link from "next/link";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { mockProducts } from "@/data/mock";
+import { getCustomerSession } from "@/lib/auth";
 
-export default function CheckoutPage() {
+export default async function CheckoutPage() {
+  const session = await getCustomerSession();
   const subtotal = 4298; // Mock subtotal
   const shipping = 100;
   const total = subtotal + shipping;
@@ -16,14 +18,16 @@ export default function CheckoutPage() {
         <div className="flex-1 max-w-2xl">
           <div className="mb-8">
             <h1 className="font-heading text-3xl font-medium mb-2">Checkout</h1>
-            <p className="text-sm text-muted-foreground">Already have an account? <Link href="/account/login" className="text-foreground underline underline-offset-4">Log in</Link></p>
+            {!session.isLoggedIn && (
+              <p className="text-sm text-muted-foreground">Already have an account? <Link href="/login" className="text-foreground underline underline-offset-4">Log in</Link></p>
+            )}
           </div>
 
           <form className="space-y-10">
             {/* Contact */}
             <section>
               <h2 className="text-lg font-medium mb-4">Contact Information</h2>
-              <Input type="email" placeholder="Email Address" className="w-full h-12 rounded-none bg-secondary/50 border-border" />
+              <Input type="email" placeholder="Email Address" defaultValue={session.email || ""} readOnly={session.isLoggedIn} className="w-full h-12 rounded-none bg-secondary/50 border-border" />
             </section>
 
             {/* Shipping */}

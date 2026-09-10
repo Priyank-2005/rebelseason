@@ -1,10 +1,13 @@
 import Link from "next/link";
 import { ProductCard } from "@/components/product/ProductCard";
-import { mockProducts } from "@/data/mock";
+import { ProductWithRelations } from "@/lib/dal";
 
-export function NewArrivalsProducts() {
-  // Use a different slice of products for variety
-  const newArrivals = mockProducts.slice().reverse().slice(0, 6);
+interface NewArrivalsProductsProps {
+  products: ProductWithRelations[];
+}
+
+export function NewArrivalsProducts({ products }: NewArrivalsProductsProps) {
+  if (!products || products.length === 0) return null;
 
   return (
     <section className="py-20 lg:py-24 bg-background">
@@ -20,7 +23,7 @@ export function NewArrivalsProducts() {
             </p>
           </div>
           <Link 
-            href="/categories/new-arrivals" 
+            href="/products" 
             className="inline-block border-b border-foreground pb-1 text-[11px] font-semibold tracking-[0.15em] uppercase hover:text-muted-foreground hover:border-muted-foreground transition-colors"
           >
             Shop All
@@ -28,7 +31,7 @@ export function NewArrivalsProducts() {
         </div>
 
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-x-3 sm:gap-x-4 lg:gap-x-6 gap-y-10 sm:gap-y-12">
-          {newArrivals.map((product) => (
+          {products.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}
         </div>

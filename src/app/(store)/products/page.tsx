@@ -1,9 +1,11 @@
 import { ProductCard } from "@/components/product/ProductCard";
-import { mockProducts } from "@/data/mock";
+import { getAllProducts } from "@/lib/dal/products";
 import { Button } from "@/components/ui/button";
 import { SlidersHorizontal, ChevronDown } from "lucide-react";
 
-export default function ProductsPage() {
+export default async function ProductsPage() {
+  const products = await getAllProducts();
+
   return (
     <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-16 w-full">
       {/* Header */}
@@ -21,7 +23,7 @@ export default function ProductsPage() {
           Filter
         </Button>
         <div className="text-[12px] uppercase tracking-[0.1em] text-muted-foreground hidden sm:block font-medium">
-          {mockProducts.length} Results
+          {products.length} Results
         </div>
         <Button variant="ghost" className="text-[12px] uppercase tracking-[0.1em] font-semibold gap-2 hover:bg-transparent">
           Sort: Recommended
@@ -31,12 +33,8 @@ export default function ProductsPage() {
 
       {/* Product Grid */}
       <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-4 sm:gap-x-6 gap-y-16">
-        {mockProducts.map((product) => (
+        {products.map((product) => (
           <ProductCard key={product.id} product={product} />
-        ))}
-        {/* Duplicating for UI demonstration */}
-        {mockProducts.map((product) => (
-          <ProductCard key={`${product.id}-dup`} product={{...product, id: `${product.id}-dup`}} />
         ))}
       </div>
 

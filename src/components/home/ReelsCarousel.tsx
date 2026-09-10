@@ -1,16 +1,19 @@
-"use client";
+﻿"use client";
 
 import { Play } from "lucide-react";
 
-export function ReelsCarousel() {
-  const reels = [
-    { id: 1, image: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&q=80&w=800", link: "https://www.instagram.com/rebel_seasonn/" },
-    { id: 2, image: "https://images.unsplash.com/photo-1529139574466-a303027c028b?auto=format&fit=crop&q=80&w=800", link: "https://www.instagram.com/rebel_seasonn/" },
-    { id: 3, image: "https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&q=80&w=800", link: "https://www.instagram.com/rebel_seasonn/" },
-    { id: 4, image: "https://images.unsplash.com/photo-1550639525-c97d455acf70?auto=format&fit=crop&q=80&w=800", link: "https://www.instagram.com/rebel_seasonn/" },
-    { id: 5, image: "https://images.unsplash.com/photo-1583391733958-d2597285ea93?auto=format&fit=crop&q=80&w=800", link: "https://www.instagram.com/rebel_seasonn/" },
-    { id: 6, image: "https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?auto=format&fit=crop&q=80&w=800", link: "https://www.instagram.com/rebel_seasonn/" },
+export function ReelsCarousel({ settings }: { settings?: Record<string, string> }) {
+  const rawReels = [
+    { id: 1, image: settings?.reel1_image, link: "https://www.instagram.com/rebel_seasonn/" },
+    { id: 2, image: settings?.reel2_image, link: "https://www.instagram.com/rebel_seasonn/" },
+    { id: 3, image: settings?.reel3_image, link: "https://www.instagram.com/rebel_seasonn/" },
+    { id: 4, image: settings?.reel4_image, link: "https://www.instagram.com/rebel_seasonn/" },
+    { id: 5, image: settings?.reel5_image, link: "https://www.instagram.com/rebel_seasonn/" },
+    { id: 6, image: settings?.reel6_image, link: "https://www.instagram.com/rebel_seasonn/" },
   ];
+  const reels = rawReels.filter(r => r.image);
+  
+  if (reels.length === 0) return null;
 
   return (
     <section className="py-20 lg:py-24 bg-background overflow-hidden">
@@ -59,3 +62,6 @@ export function ReelsCarousel() {
     </section>
   );
 }
+
+
+
