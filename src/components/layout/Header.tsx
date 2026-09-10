@@ -59,15 +59,7 @@ export function Header({ user }: { user?: { name: string } | null }) {
 
             {/* Right: Icons & Auth */}
             <div className="flex items-center justify-end gap-5 flex-1">
-                            <div className="hidden lg:flex items-center gap-4 text-[12px] font-medium mr-2">
-                {!user ? (
-                  <>
-                    <Link href="/login" className="text-foreground hover:text-muted-foreground transition-colors">Log In</Link>
-                    <Link href="/signup" className="text-foreground hover:text-muted-foreground transition-colors">Sign Up</Link>
-                  </>
-                ) : null}
-              </div>
-              <button className="text-foreground hover:text-muted-foreground transition-colors">
+                            <button className="text-foreground hover:text-muted-foreground transition-colors">
                 <Search className="w-5 h-5 stroke-[1.5]" />
                 <span className="sr-only">Search</span>
               </button>
@@ -103,10 +95,7 @@ export function Header({ user }: { user?: { name: string } | null }) {
             <Link href="/categories/jeans" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-muted-foreground transition-colors uppercase tracking-wide">Jeans</Link>
             <Link href="/categories/winterwear" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-muted-foreground transition-colors uppercase tracking-wide">Winterwear</Link>
             
-            <div className="pt-8 mt-8 border-t border-border/50 w-full flex flex-col space-y-8">
-              <Link href="/login" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-muted-foreground transition-colors">Log In</Link>
-              <Link href="/signup" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-muted-foreground transition-colors">Sign Up</Link>
-            </div>
+            
           </nav>
         </div>
       )}
