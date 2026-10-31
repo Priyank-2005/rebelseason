@@ -24,34 +24,48 @@ export default function CancellationRefundPolicyPage() {
       </section>
 
       <section>
-        <h2>No returns, exchanges or refunds</h2>
+        <h2>No returns</h2>
         <ul>
-          <li>All sales are final. We do not offer returns, exchanges or refunds on confirmed or delivered orders.</li>
-          <li>This includes change of mind, incorrect size selection, or the product not matching personal preferences.</li>
-          <li>Slight variations in colour between the product photos and the actual product may occur due to lighting and screen settings, and are not considered defects.</li>
+          <li>We do not accept returns, and we do not offer refunds on confirmed or delivered orders.</li>
+          <li>We do not accept returns or exchanges for dislike, change of mind, incorrect size selection or personal preference.</li>
+          <li>Our team makes sure that only premium quality products are shipped, and the product delivered will be exactly as ordered.</li>
+          <li>We try to show accurate product images and videos on our website. However, slight variations in colour may occur due to screen lighting and display settings. These are not considered defects.</li>
         </ul>
       </section>
 
       <section>
-        <h2>Exceptions: damaged, defective or wrong items</h2>
-        <p>We stand behind the quality of what we ship. If your order arrives:</p>
+        <h2>Exchange policy</h2>
+        <p>We offer exchanges only in the following cases:</p>
         <ul>
-          <li>damaged or defective, or</li>
-          <li>with the wrong product or wrong size compared to your order,</li>
+          <li>the product delivered is different from the order placed, or</li>
+          <li>the product has a genuine manufacturing defect.</li>
         </ul>
         <p>
-          please contact us within {c.damageReportHours} hours of delivery with your order number, clear photos of the
-          product and packaging, and an unboxing video if available. After verification, we will send a replacement. If a
-          replacement is not available, we will issue a full refund for the affected item.
+          Claims must be reported to us within {c.damageReportHours} hours of delivery, together with a complete unboxing
+          video as proof. Only then can we process your exchange request.
         </p>
-        <p>Items must be unused, unwashed and returned with original tags and packaging for the claim to be accepted.</p>
+      </section>
+
+      <section>
+        <h2>Unboxing video guidelines</h2>
+        <ol>
+          <li>Start recording before opening the package.</li>
+          <li>Clearly capture the shipping label and tracking details on the parcel.</li>
+          <li>Show the package from all sides (360°), so that it is clearly sealed and untampered.</li>
+          <li>Begin unboxing on camera in one continuous video, with no cuts, edits or pauses.</li>
+          <li>Inspect the product thoroughly in the video. Any defect must be clearly visible in the recording.</li>
+        </ol>
+        <p>
+          If the parcel is damaged or tampered with, please do not accept it. Record a video and share it with us
+          immediately.
+        </p>
       </section>
 
       <section>
         <h2>Orders we cannot fulfil</h2>
         <p>
           In the rare case that we are unable to ship your order (for example, if an item goes out of stock after payment),
-          we will cancel the order and issue a full refund, including any shipping charges.
+          we will cancel the order and issue a full refund, including any shipping charges. This is the only case in which an order is refunded.
         </p>
       </section>
 
@@ -66,7 +80,7 @@ export default function CancellationRefundPolicyPage() {
       <section>
         <h2>Refund method and timeline</h2>
         <p>
-          Approved refunds are issued to the original payment method used at checkout and usually reflect in your account
+          Refunds (for orders we cannot fulfil, and failed or duplicate payments) are issued to the original payment method used at checkout and usually reflect in your account
           within {c.refundProcessingDays}, depending on your bank or payment provider.
         </p>
       </section>

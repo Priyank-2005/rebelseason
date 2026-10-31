@@ -50,7 +50,7 @@ export default function ShippingPolicyPage() {
       <section>
         <h2>Damaged parcels</h2>
         <p>
-          If your parcel arrives visibly damaged or tampered with, please take photos and contact us within{" "}
+          If your parcel arrives visibly damaged or tampered with, please do not accept it, record a video and contact us within{" "}
           {c.damageReportHours} hours of delivery. See our <Link href="/returns">Cancellation &amp; Refund Policy</Link> for
           details.
         </p>

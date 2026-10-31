@@ -476,8 +476,8 @@ export default function CheckoutClient({ session }: { session: CheckoutSession }
             )}
 
             <p className="text-xs text-muted-foreground leading-relaxed">
-              All sales are final: confirmed orders cannot be cancelled, returned or refunded, except for damaged or
-              incorrect items. Estimated delivery: {siteConfig.deliveryDays}. By placing this order you agree to our{" "}
+              All sales are final: confirmed orders cannot be cancelled or returned. Exchanges are offered only for a wrong
+              item or a manufacturing defect, reported within 24 hours with an unboxing video. Estimated delivery: {siteConfig.deliveryDays}. By placing this order you agree to our{" "}
               <Link href="/terms" target="_blank" className="underline underline-offset-2">Terms</Link>,{" "}
               <Link href="/returns" target="_blank" className="underline underline-offset-2">Cancellation &amp; Refund Policy</Link> and{" "}
               <Link href="/shipping" target="_blank" className="underline underline-offset-2">Shipping Policy</Link>.

@@ -48,8 +48,9 @@ export default function TermsPage() {
       <section>
         <h2>Cancellations, returns and refunds</h2>
         <p>
-          Confirmed orders cannot be cancelled, and we do not offer returns, exchanges or refunds, except for damaged,
-          defective or incorrect items reported within {c.damageReportHours} hours of delivery. Full details are in our{" "}
+          Confirmed orders cannot be cancelled, and we do not accept returns. Exchanges are offered only if the product delivered is different from the
+          order or has a genuine manufacturing defect, reported within {c.damageReportHours} hours of delivery with a complete
+          unboxing video. Full details are in our{" "}
           <Link href="/returns">Cancellation &amp; Refund Policy</Link>.
         </p>
       </section>

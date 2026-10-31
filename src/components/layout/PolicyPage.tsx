@@ -7,7 +7,7 @@ export function PolicyPage({ title, children }: { title: string; children: React
       <p className="text-center text-sm text-muted-foreground mb-12">
         Last updated: {siteConfig.policiesLastUpdated}
       </p>
-      <div className="space-y-8 text-[15px] leading-relaxed text-foreground/80 [&_h2]:font-heading [&_h2]:text-2xl [&_h2]:text-foreground [&_h2]:mb-3 [&_ul]:list-disc [&_ul]:pl-6 [&_ul]:space-y-2 [&_a]:underline [&_a]:underline-offset-4">
+      <div className="space-y-8 text-[15px] leading-relaxed text-foreground/80 [&_h2]:font-heading [&_h2]:text-2xl [&_h2]:text-foreground [&_h2]:mb-3 [&_ul]:list-disc [&_ul]:pl-6 [&_ul]:space-y-2 [&_ol]:list-decimal [&_ol]:pl-6 [&_ol]:space-y-2 [&_a]:underline [&_a]:underline-offset-4">
         {children}
       </div>
     </div>

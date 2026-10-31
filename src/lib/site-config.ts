@@ -20,11 +20,11 @@ export const siteConfig = {
   instagram: "https://www.instagram.com/rebel_seasonn/",
 
   // Policy terms used on the Shipping, Cancellation & Refund and Terms pages.
-  policiesLastUpdated: "6 October 2026",
+  policiesLastUpdated: "31 October 2026",
   // Estimated time from order confirmation to delivery.
   deliveryDays: "8–14 days",
-  // Window to report a damaged, defective or wrong item (the only refund exception).
-  damageReportHours: 48,
+  // Window to report a damaged, defective or wrong item (the only exchange exceptions).
+  damageReportHours: 24,
   // Time for an approved refund to reach the customer's original payment method.
   refundProcessingDays: "5–7 business days",
   freeShippingThreshold: FREE_SHIPPING_THRESHOLD,
