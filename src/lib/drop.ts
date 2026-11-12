@@ -1,4 +1,4 @@
-// The Daily Drop: new pieces are released at a fixed time each day (8:30 AM IST),
+// The Daily Drop: new pieces are released at a fixed time each day (8:30 PM IST),
 // shown in a special homepage section for 24 hours, and then flow into New
 // Arrivals on their own. Everything about that timing lives here so the admin
 // form, the storefront queries and the countdown all agree.
@@ -9,9 +9,9 @@
 const IST_OFFSET_MS = 5.5 * 60 * 60 * 1000;
 const DAY_MS = 24 * 60 * 60 * 1000;
 
-export const DROP_HOUR = 8;
+export const DROP_HOUR = 20;
 export const DROP_MINUTE = 30;
-export const DROP_TIME_LABEL = "8:30 AM";
+export const DROP_TIME_LABEL = "8:30 PM";
 /** How long a dropped piece stays in the Daily Drop section. */
 export const DROP_VISIBLE_MS = DAY_MS;
 /** Furthest ahead a release can be scheduled. */
@@ -70,7 +70,7 @@ export function formatDropWeekday(date: Date | string): string {
   return weekday.format(new Date(date));
 }
 
-/** "17 Oct, 8:30 am" in Indian time, whatever the viewer's own time zone. */
+/** "17 Oct, 8:30 pm" in Indian time, whatever the viewer's own time zone. */
 export function formatDropDateTime(date: Date | string): string {
   return dateTime.format(new Date(date));
 }

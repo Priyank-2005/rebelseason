@@ -5,7 +5,7 @@ export const CATALOG_TAG = "catalog";
 
 /**
  * Cached catalog data is refreshed at least this often (seconds). Kept short because
- * products can be scheduled to go live at a set time (the daily 8:30 AM drop), and the
+ * products can be scheduled to go live at a set time (the daily 8:30 PM drop), and the
  * storefront should pick that up within a minute of the release.
  */
 export const CATALOG_REVALIDATE_SECONDS = 60;

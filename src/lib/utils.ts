@@ -14,7 +14,7 @@ export function cn(...inputs: ClassValue[]) {
 const dateTimeIST = new Intl.DateTimeFormat("en-IN", { timeZone: "Asia/Kolkata", day: "numeric", month: "short", year: "numeric", hour: "numeric", minute: "2-digit", hour12: true });
 const timeIST = new Intl.DateTimeFormat("en-IN", { timeZone: "Asia/Kolkata", hour: "numeric", minute: "2-digit", hour12: true });
 
-/** "17 Oct 2026, 8:30 am" in Indian time, whatever time zone the server or browser is in. */
+/** "17 Oct 2026, 8:30 pm" in Indian time, whatever time zone the server or browser is in. */
 export function formatDateTime(value: Date | string): string {
   return dateTimeIST.format(new Date(value));
 }
@@ -26,7 +26,7 @@ export function formatDate(value: Date | string): string {
   return dateIST.format(new Date(value));
 }
 
-/** "8:30 am" in Indian time. */
+/** "8:30 pm" in Indian time. */
 export function formatTime(value: Date | string): string {
   return timeIST.format(new Date(value));
 }
