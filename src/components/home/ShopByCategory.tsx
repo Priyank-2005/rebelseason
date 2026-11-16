@@ -25,7 +25,7 @@ export function ShopByCategory({ categories }: ShopByCategoryProps) {
 
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 lg:gap-6">
           {categories.map((category) => (
-            <Link 
+            <Link prefetch={false} 
               key={category.id} 
               href={`/categories/${category.slug}`}
               className="group relative block w-full overflow-hidden aspect-[4/5] bg-secondary"

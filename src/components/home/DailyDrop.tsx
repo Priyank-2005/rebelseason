@@ -49,7 +49,7 @@ function DropCard({ product, index }: { product: DropProduct; index: number }) {
       : [];
 
   return (
-    <Link
+    <Link prefetch={false}
       href={`/products/${product.slug}`}
       className="group relative block w-[72%] shrink-0 snap-start overflow-hidden rounded-2xl bg-white/5 sm:w-[44%] md:w-[31%] lg:w-[23.5%]"
       style={{ aspectRatio: "3 / 4.3" }}
@@ -172,7 +172,7 @@ export function DailyDrop({ drop }: { drop: DailyDropData }) {
         </DropRail>
 
         <div className="mt-10 flex justify-center">
-          <Link
+          <Link prefetch={false}
             href="/products"
             className="inline-flex items-center gap-2 border-b border-background/60 pb-1 text-[11px] font-semibold uppercase tracking-[0.2em] transition-colors hover:border-primary hover:text-primary"
           >

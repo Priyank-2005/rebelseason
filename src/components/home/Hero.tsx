@@ -28,7 +28,7 @@ export function Hero() {
             variant="outline"
             className="rounded-full border-foreground/40 bg-transparent text-foreground hover:bg-foreground hover:text-background text-[13px] font-medium px-8 h-12 tracking-wide transition-all"
           >
-            <Link href="/products">Shop all</Link>
+            <Link prefetch={false} href="/products">Shop all</Link>
           </Button>
         </div>
       </div>

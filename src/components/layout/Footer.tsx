@@ -27,9 +27,9 @@ export function Footer({ categories }: { categories: { name: string; slug: strin
           <div>
             <h4 className="text-[11px] font-semibold uppercase tracking-[0.15em] mb-6 text-white/80">Shop</h4>
             <ul className="space-y-3 text-[13px] text-background/60">
-              <li><Link href="/products" className="hover:text-white transition-colors">All Products</Link></li>
+              <li><Link prefetch={false} href="/products" className="hover:text-white transition-colors">All Products</Link></li>
               {categories.map((c) => (
-                <li key={c.slug}><Link href={`/categories/${c.slug}`} className="hover:text-white transition-colors">{c.name}</Link></li>
+                <li key={c.slug}><Link prefetch={false} href={`/categories/${c.slug}`} className="hover:text-white transition-colors">{c.name}</Link></li>
               ))}
             </ul>
           </div>
@@ -38,11 +38,11 @@ export function Footer({ categories }: { categories: { name: string; slug: strin
           <div>
             <h4 className="text-[11px] font-semibold uppercase tracking-[0.15em] mb-6 text-white/80">Support</h4>
             <ul className="space-y-3 text-[13px] text-background/60">
-              <li><Link href="/contact" className="hover:text-white transition-colors">Contact Us</Link></li>
-              <li><Link href="/shipping" className="hover:text-white transition-colors">Shipping &amp; Delivery</Link></li>
-              <li><Link href="/returns" className="hover:text-white transition-colors">Cancellation &amp; Refunds</Link></li>
-              <li><Link href="/terms" className="hover:text-white transition-colors">Terms &amp; Conditions</Link></li>
-              <li><Link href="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link></li>
+              <li><Link prefetch={false} href="/contact" className="hover:text-white transition-colors">Contact Us</Link></li>
+              <li><Link prefetch={false} href="/shipping" className="hover:text-white transition-colors">Shipping &amp; Delivery</Link></li>
+              <li><Link prefetch={false} href="/returns" className="hover:text-white transition-colors">Cancellation &amp; Refunds</Link></li>
+              <li><Link prefetch={false} href="/terms" className="hover:text-white transition-colors">Terms &amp; Conditions</Link></li>
+              <li><Link prefetch={false} href="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link></li>
             </ul>
           </div>
 
@@ -51,8 +51,8 @@ export function Footer({ categories }: { categories: { name: string; slug: strin
         <div className="mt-16 pt-6 border-t border-background/10 flex flex-col md:flex-row justify-between items-center gap-4 text-[11px] text-background/40">
           <p>&copy; {new Date().getFullYear()} The Rebel Season. All rights reserved.</p>
           <div className="flex space-x-6">
-            <Link href="/privacy" className="hover:text-background/70 transition-colors">Privacy Policy</Link>
-            <Link href="/terms" className="hover:text-background/70 transition-colors">Terms &amp; Conditions</Link>
+            <Link prefetch={false} href="/privacy" className="hover:text-background/70 transition-colors">Privacy Policy</Link>
+            <Link prefetch={false} href="/terms" className="hover:text-background/70 transition-colors">Terms &amp; Conditions</Link>
           </div>
         </div>
       </div>

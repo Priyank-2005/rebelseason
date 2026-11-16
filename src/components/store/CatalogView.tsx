@@ -53,7 +53,7 @@ export function CatalogView({
             <span key={`${crumb.label}-${i}`} className="flex items-center">
               {i > 0 && <ChevronRight className="w-3 h-3 mx-3" />}
               {crumb.href ? (
-                <Link href={crumb.href} className="hover:text-foreground transition-colors">{crumb.label}</Link>
+                <Link prefetch={false} href={crumb.href} className="hover:text-foreground transition-colors">{crumb.label}</Link>
               ) : (
                 <span className="text-foreground">{crumb.label}</span>
               )}
@@ -70,7 +70,7 @@ export function CatalogView({
       {pills && pills.length > 0 && (
         <div className="flex flex-wrap justify-center gap-2 mb-10">
           {pills.map((pill) => (
-            <Link
+            <Link prefetch={false}
               key={pill.href}
               href={pill.href}
               className={`border px-5 py-2 text-[11px] font-semibold uppercase tracking-[0.15em] transition-colors ${
@@ -100,7 +100,7 @@ export function CatalogView({
             <ul className="absolute right-0 top-full z-20 mt-3 min-w-[210px] border border-border bg-background py-2 shadow-lg">
               {SORT_OPTIONS.map((option) => (
                 <li key={option.id}>
-                  <Link
+                  <Link prefetch={false}
                     href={filtersHref(basePath, filters, option.id)}
                     scroll={false}
                     aria-current={option.id === sort ? "true" : undefined}

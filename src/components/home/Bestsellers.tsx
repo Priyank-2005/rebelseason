@@ -24,7 +24,7 @@ export function Bestsellers() {
             asChild 
             className="rounded-md bg-foreground text-background hover:bg-foreground/85 text-[13px] font-medium px-8 h-12 tracking-wide"
           >
-            <Link href="/products">Shop now</Link>
+            <Link prefetch={false} href="/products">Shop now</Link>
           </Button>
         </div>
       </div>

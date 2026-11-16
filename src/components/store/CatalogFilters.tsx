@@ -57,7 +57,7 @@ function FilterGroups({ basePath, facets, filters, sort, type }: CatalogFiltersP
             {facets[key].map((value) => {
               const active = filters[key].includes(value);
               return (
-                <Link
+                <Link prefetch={false}
                   key={value}
                   href={toggleFilterHref(basePath, filters, sort, key, value)}
                   scroll={false}
@@ -90,7 +90,7 @@ export function CatalogFilters({ basePath, facets, filters, sort, type }: Catalo
 
   const count = activeFilterCount(filters);
   const clear = count > 0 && (
-    <Link href={filtersHref(basePath, emptyFilters(), sort)} scroll={false} className="text-[11px] font-medium uppercase tracking-[0.1em] underline underline-offset-4 text-muted-foreground hover:text-foreground">
+    <Link prefetch={false} href={filtersHref(basePath, emptyFilters(), sort)} scroll={false} className="text-[11px] font-medium uppercase tracking-[0.1em] underline underline-offset-4 text-muted-foreground hover:text-foreground">
       Clear all
     </Link>
   );

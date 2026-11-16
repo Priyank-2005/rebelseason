@@ -22,7 +22,7 @@ export function TrendingProducts({ products }: TrendingProductsProps) {
               Handpicked favorites our customers are loving right now.
             </p>
           </div>
-          <Link 
+          <Link prefetch={false} 
             href="/products" 
             className="inline-block border-b border-foreground pb-1 text-[11px] font-semibold tracking-[0.15em] uppercase hover:text-muted-foreground hover:border-muted-foreground transition-colors"
           >

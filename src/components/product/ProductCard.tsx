@@ -28,7 +28,7 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
 
   return (
     <div className="group flex flex-col w-full">
-      <Link
+      <Link prefetch={false}
         href={`/products/${product.slug}`}
         className="relative overflow-hidden bg-secondary mb-5 block w-full"
         style={{ aspectRatio: '3/4' }}
@@ -79,7 +79,7 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
       </Link>
 
       <div className="flex flex-col text-center space-y-1.5 px-2">
-        <Link
+        <Link prefetch={false}
           href={`/products/${product.slug}`}
           className="text-[13px] font-medium tracking-wide hover:text-muted-foreground transition-colors"
         >
